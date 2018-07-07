@@ -17,6 +17,7 @@ public class ChatClient {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        String test = "Hello world";
     }
     
 }
