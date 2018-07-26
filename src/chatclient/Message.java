@@ -10,5 +10,6 @@ package chatclient;
  * @author pawn
  */
 public class Message {
-    
+    Message(){}
+    private int getChannelID;
 }

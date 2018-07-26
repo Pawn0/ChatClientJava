@@ -5,6 +5,10 @@
  */
 package chatclient;
 
+import java.awt.FlowLayout;
+import java.awt.event.KeyEvent;
+import javax.swing.JPanel;
+
 /**
  *
  * @author pawn
@@ -29,10 +33,10 @@ public class LoginMenu extends javax.swing.JFrame {
 
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jBLogin = new javax.swing.JButton();
+        jPasswordField = new javax.swing.JPasswordField();
+        jUserNameField = new javax.swing.JTextField();
+        jBRegister = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -45,28 +49,31 @@ public class LoginMenu extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setLocation(new java.awt.Point(100, 100));
+        setTitle("Chat Client v.01 Alpha");
+        setLocation(new java.awt.Point(150, 150));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+        jBLogin.setText("Login");
+        jBLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBLoginMouseClicked(evt);
+            }
+        });
+        jBLogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jBLoginKeyPressed(evt);
             }
         });
 
-        jPasswordField1.setText("jPasswordField1");
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        jBRegister.setText("Register");
+        jBRegister.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBRegisterMouseClicked(evt);
             }
         });
-
-        jButton2.setText("Register");
 
         jLabel6.setText("Username");
 
@@ -80,7 +87,7 @@ public class LoginMenu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jUserNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -89,10 +96,10 @@ public class LoginMenu extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(jBLogin)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jBRegister))
+                            .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
@@ -104,12 +111,12 @@ public class LoginMenu extends javax.swing.JFrame {
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jUserNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jBLogin)
+                    .addComponent(jBRegister))
                 .addGap(12, 12, 12))
         );
 
@@ -165,7 +172,7 @@ public class LoginMenu extends javax.swing.JFrame {
 
         jLabel4.setText("Version .01 Alpha");
 
-        jLabel5.setText("Matt Aker");
+        jLabel5.setText("Matt Aker/Zeno");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -227,13 +234,21 @@ public class LoginMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jBLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBLoginMouseClicked
+        login();
+    }//GEN-LAST:event_jBLoginMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void jBRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBRegisterMouseClicked
+        
+        RegisterMenu registrationMenu = new RegisterMenu();
+        registrationMenu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jBRegisterMouseClicked
+
+    private void jBLoginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jBLoginKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER)
+            login();
+    }//GEN-LAST:event_jBLoginKeyPressed
 
     /**
      * @param args the command line arguments
@@ -269,10 +284,26 @@ public class LoginMenu extends javax.swing.JFrame {
             }
         });
     }
+    
+    void login(){
+        String username = "null";
+        char[] password = new char[50];
+        
+        password = jPasswordField.getPassword();
+        username = jUserNameField.getText();
+        
+        System.out.println(username);
+        
+        for(char letter : password){
+          System.out.println(letter);  
+        }
+        
+        username = jUserNameField.getText();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jBLogin;
+    private javax.swing.JButton jBRegister;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -284,8 +315,8 @@ public class LoginMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jUserNameField;
     // End of variables declaration//GEN-END:variables
 }
